@@ -3,10 +3,12 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Main extends JFrame{
-	private Container c1;
-	private JMenuBar mnBarra;
-	private JMenu mnArquivo, mnEntrada ,mnPrincipal, mnSobremesa;
-	private JMenuItem miSair,miPrato1, miPrato2, miPrato3, miPrato4, miPrato5, miPrato6, miPrato7, miPrato8, miPrato9;
+	 Container c1;
+	 JMenuBar mnBarra;
+	 JMenu mnArquivo, mnEntrada ,mnPrincipal, mnSobremesa;
+	 JMenuItem miInicio, miSair,miPrato1, miPrato2, miPrato3, miPrato4, miPrato5, miPrato6, miPrato7, miPrato8, miPrato9;
+	 JLabel jlLogo, jlInvi;
+	 ImageIcon imgLogo;
 	
 
 	public Main() {
@@ -14,8 +16,9 @@ public class Main extends JFrame{
 		definirEventos();
 	}
 
-	private void inicializarComponentes() {
+	public void inicializarComponentes() {
 		c1 = getContentPane();
+		
 		mnBarra = new JMenuBar();
 		
 		mnArquivo = new JMenu("Arquivo");
@@ -51,10 +54,10 @@ public class Main extends JFrame{
 		miPrato9 = new JMenuItem("Torta");
 		miPrato9.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK));
 		
+		miInicio = new JMenuItem("Inicio");
 		miSair = new JMenuItem("Sair");
-		miSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		
-		
+		mnArquivo.add(miInicio);
 		mnArquivo.add(miSair);
 		
 		mnEntrada.add(miPrato1);
@@ -73,10 +76,34 @@ public class Main extends JFrame{
 		mnBarra.add(mnEntrada);
 		mnBarra.add(mnPrincipal);
 		mnBarra.add(mnSobremesa);
+		
 		setJMenuBar(mnBarra);
 		
+		imgLogo = new ImageIcon("logoRestaurante.jpg");
+		jlLogo = new JLabel(imgLogo);
+		jlLogo.setSize(600, 600);
+		
+		c1.add(jlLogo);	
+		
+		jlInvi = new JLabel();
+		jlInvi.setVisible(false);
+		c1.add(jlInvi);		
+		
 	}
-	private void definirEventos() {
+	public void definirEventos() {
+		
+		miInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setSize(600, 600);
+				setLocationRelativeTo(null);
+				setTitle("Inicio");
+				c1.removeAll(); 
+				c1.add(jlInvi);	
+				c1.add(jlLogo);	
+				c1.validate();
+			}
+		});
+		
 		miSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -85,22 +112,96 @@ public class Main extends JFrame{
 
 		miPrato1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main a1 = new Main();
+				Prato1 a1 = new Prato1();
+				setTitle("Pão");
 				c1.removeAll();
 				c1.add(a1);
 				c1.validate();
-			
-				
-			
 			}
 		});
 		
+		miPrato2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Prato2 a1 = new Prato2();
+				setTitle("Frios");
+				c1.removeAll();
+				c1.add(a1);
+				c1.validate();
+			}
+		});
+		
+		miPrato3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Prato3 a1 = new Prato3();
+				setTitle("Queijos");
+				c1.removeAll();
+				c1.add(a1);
+				c1.validate();
+			}
+		});
+		miPrato4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Prato4 a1 = new Prato4();
+				setTitle("Carne");
+				c1.removeAll();
+				c1.add(a1);
+				c1.validate();
+			}
+		});
+		miPrato5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Prato5 a1 = new Prato5();
+				setTitle("Frango");
+				c1.removeAll();
+				c1.add(a1);
+				c1.validate();
+			}
+		});
+		miPrato6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Prato6 a1 = new Prato6();
+				setTitle("Costela");
+				c1.removeAll();
+				c1.add(a1);
+				c1.validate();
+			}
+		});
+		miPrato7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Prato7 a1 = new Prato7();
+				setTitle("Pudim");
+				c1.removeAll();
+				c1.add(a1);
+				c1.validate();
+			}
+		});
+		miPrato8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Prato8 a1 = new Prato8();
+				setTitle("Sorvete");
+				c1.removeAll();
+				c1.add(a1);
+				c1.validate();
+			}
+		});
+		miPrato9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Prato9 a1 = new Prato9();
+				setTitle("Torta");
+				c1.removeAll();
+				c1.add(a1);
+				c1.validate();
+			}
+		});
 	}
 
-	public static void main(String args[]) {
+	public static void main (String args[]) {
 		 Main frame = new Main();
+		 frame.setTitle("Restaurante");
 		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 frame.setBounds(0,0,500,300);
+		 frame.setSize(600,600);
+		 frame.setLocationRelativeTo(null);
+		 frame.setResizable(false);
 		 frame.setVisible(true);
 
 	}

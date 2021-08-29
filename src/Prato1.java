@@ -12,9 +12,9 @@ public class Prato1 extends JPanel {
 
 	public void Componentes() {
 		setLayout(null);
-		imgPrato = new ImageIcon("Prato1.jpg");
+		imgPrato = new ImageIcon("pao.jpg");
 		jlPrato = new JLabel(imgPrato);
-		jlPrato.setBounds(0, 0, 564, 297);
+		jlPrato.setBounds(0, 0, 600, 600);
 		add(jlPrato);
 	}
 	
